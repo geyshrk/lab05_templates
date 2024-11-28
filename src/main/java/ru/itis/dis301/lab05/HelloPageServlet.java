@@ -7,26 +7,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
-@WebServlet("/index")
-public class IndexPageServlet extends HttpServlet {
-
+@WebServlet("/hello")
+public class HelloPageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-        // Формирование параметров для шаблона
         request.setAttribute("osname", (String) request.getHeader("Sec-Ch-Ua-Platform"));
-        request.setAttribute("browser", "Интернет Обозреватель");
-
         try {
-            // Перенаправляем запрос к сервлету-шаблонизатору.
-            // Указываем ресурс для обработки.
-            request.getRequestDispatcher("/template/index.thtml").forward(request, response);
-
+            request.getRequestDispatcher("/template/hello.thtml").forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }

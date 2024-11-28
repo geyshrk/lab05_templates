@@ -61,7 +61,7 @@
                         </goals>
                         <configuration>
                             <sourceFile>target/lab05.war</sourceFile>
-                            <destinationFile>D:\apache-tomcat-10.1.33\webapps\${context.name}.war</destinationFile>
+                            <destinationFile>/Users/misha/apache-tomcat-10.1.33/webapps/${context.name}.war</destinationFile>
                         </configuration>
                     </execution>
                 </executions>

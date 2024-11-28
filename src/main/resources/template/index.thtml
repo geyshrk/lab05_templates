@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
 </head>
 <body>
-<h1>${param1}</h1>
+<h1>${browser}</h1>
 
 <div>
 
