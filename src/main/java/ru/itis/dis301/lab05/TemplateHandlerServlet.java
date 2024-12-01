@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Objects;
 
 @WebServlet("*.thtml")
@@ -23,21 +24,17 @@ public class TemplateHandlerServlet extends HttpServlet {
             byte[] content = inputStream.readAllBytes();
             //Делаем StringBuilder из считанной странички
             StringBuilder contentTemplate = new StringBuilder(new String(content));
-            //Проходим по всем аттрибутам
-            Iterator<String> attributeNames = request.getAttributeNames().asIterator();
-            while(attributeNames.hasNext()){
-                String attributeName = attributeNames.next();
-                String attributeVariable = String.format("${%s}", attributeName);
-                String attributeValue = "";
-                //Ищем, есть ли у нас в HTML странице переменные, которые можно заменить на значения аттрибутов
-                if (contentTemplate.indexOf(attributeVariable) != -1) {
-                    attributeValue = (String) request.getAttribute(attributeName);
-                }
-                //Меняем все переменные на значения аттрибутов
-                while(contentTemplate.indexOf(attributeVariable) != -1){
+            //Проходим по всем параметрам
+            Map<String, String[]> paramMap = request.getParameterMap();
+            for(String paramName : paramMap.keySet()) {
+                String paramVariable = String.format("${%s}", paramName);
+                String attributeValue = paramMap.get(paramName)[0];
 
-                    contentTemplate.replace(contentTemplate.indexOf(attributeVariable),
-                            contentTemplate.indexOf(attributeVariable) + attributeVariable.length(),
+                //Меняем все переменные на значения аттрибутов
+                while(contentTemplate.indexOf(paramVariable) != -1){
+
+                    contentTemplate.replace(contentTemplate.indexOf(paramVariable),
+                            contentTemplate.indexOf(paramVariable) + paramVariable.length(),
                             attributeValue);
                 }
             }

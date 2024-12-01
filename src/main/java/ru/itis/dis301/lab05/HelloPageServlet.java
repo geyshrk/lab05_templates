@@ -10,7 +10,6 @@ import java.io.IOException;
 @WebServlet("/hello")
 public class HelloPageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("osname", (String) request.getHeader("Sec-Ch-Ua-Platform"));
         try {
             request.getRequestDispatcher("/template/hello.thtml").forward(request, response);
         } catch (ServletException e) {

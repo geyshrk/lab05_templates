@@ -12,11 +12,6 @@ import java.io.IOException;
 public class IndexPageServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-        // Формирование параметров для шаблона
-        request.setAttribute("osname", (String) request.getHeader("Sec-Ch-Ua-Platform"));
-        request.setAttribute("browser", "Интернет Обозреватель");
-
         try {
             // Перенаправляем запрос к сервлету-шаблонизатору.
             // Указываем ресурс для обработки.

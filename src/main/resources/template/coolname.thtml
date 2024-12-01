@@ -3,32 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Атмосферное Имя</title>
-  <style>
-    body {
-      background-color: #1a1a2e;
-      color: #e94560;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-    .name {
-      font-weight: bold;
-      font-size: 4em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+  <title>Крутое Имя</title>
 </head>
 <body>
-<h1>Ваше атмосферное имя:</h1>
-<h1>${name}</h1>
+    <h1>Ваше крутое имя:</h1>
+    <h1>${name}</h1>
 </body>
 </html>
