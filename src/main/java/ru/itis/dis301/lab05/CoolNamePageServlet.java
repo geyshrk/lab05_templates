@@ -11,25 +11,6 @@ import java.io.IOException;
 @WebServlet("/coolname")
 public class CoolNamePageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String osname = (String) request.getHeader("Sec-Ch-Ua-Platform");
-        String coolname;
-        switch (osname) {
-            case ("\"Windows\""): {
-                coolname = "Оконщик";
-                break;
-            }
-            case ("\"macOS\""): {
-                coolname = "Маковод";
-                break;
-            }
-            case ("\"Linux\""): {
-                coolname = "Линуксовод";
-                break;
-            }
-            default: coolname = "Неизвестный субъект";
-
-        }
-        request.setAttribute("name", coolname);
         try {
             request.getRequestDispatcher("/template/coolname.thtml").forward(request, response);
         } catch (ServletException e) {

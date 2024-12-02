@@ -22,7 +22,7 @@ public class TemplateHandlerServlet extends HttpServlet {
 
         try {
             byte[] content = inputStream.readAllBytes();
-            //Делаем StringBuilder из считанной странички
+            //Делаем StringBuilder из считанной странички-шаблона
             StringBuilder contentTemplate = new StringBuilder(new String(content));
             //Проходим по всем параметрам
             Map<String, String[]> paramMap = request.getParameterMap();
@@ -30,7 +30,7 @@ public class TemplateHandlerServlet extends HttpServlet {
                 String paramVariable = String.format("${%s}", paramName);
                 String attributeValue = paramMap.get(paramName)[0];
 
-                //Меняем все переменные на значения аттрибутов
+                //Меняем все переменные на значения параметров
                 while(contentTemplate.indexOf(paramVariable) != -1){
 
                     contentTemplate.replace(contentTemplate.indexOf(paramVariable),
@@ -43,8 +43,6 @@ public class TemplateHandlerServlet extends HttpServlet {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
 }
